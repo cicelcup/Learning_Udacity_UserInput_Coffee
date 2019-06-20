@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Café Restaurante</string>
+    <string name="name_text" translatable="false">Nombre</string>
+    <string name="No_text">No</string>
+    <string name="Yes_text">Si</string>
+    <string name="chocolate_check">Chocolate</string>
+    <string name="hasChocolate_text">Con Chocolate</string>
+    <string name="hasWhippedCream_text">Con Crema Batida</string>
+    <string name="minusButton">-</string>
+    <string name="orderSummaryReady_text">La orden ya fue tomada</string>
+    <string name="orderSummary_text">Resumen de la orden</string>
+    <string name="order_Button">Descripción de la orden</string>
+    <string name="plusButton">+</string>
+    <string name="quantity_text">Cantidad</string>
+    <string name="send_Button">Enviar</string>
+    <string name="thanksOrder_Text">Gracias por su orden</string>
+    <string name="toppings_text">Cubiertas</string>
+    <string name="totalPrice_text">Precio Total</string>
+    <string name="whippedCream_check">Crema Batida</string>
+    <string name="notOrderYet_Text">Sin orden</string>
+    <string name="orderSummaryName_text">
+        Nombre: <xliff:g id="name" example="Amy">%s</xliff:g>
+    </string>
+    <string name="coffeeOrder_text">
+        Orden de café para:: <xliff:g id="name" example="Amy">%s</xliff:g>
+    </string>
+</resources>

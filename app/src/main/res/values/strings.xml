@@ -1,0 +1,28 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Coffee Restaurant</string>
+    <string name="name_text">Name</string>
+    <string name="toppings_text">Topping</string>
+    <string name="whippedCream_check">Whipped Cream</string>
+    <string name="chocolate_check">Chocolate</string>
+    <string name="quantity_text">Quantity</string>
+    <string name="orderSummary_text">Order Summary</string>
+    <string name="order_Button">Order Summary</string>
+    <string name="send_Button">Send</string>
+    <string name="minusButton">-</string>
+    <string name="plusButton">+</string>
+    <string name="notOrderYet_Text">Not order yet</string>
+    <string name="thanksOrder_Text">Thanks for your order!</string>
+    <string name="orderSummaryName_text">
+        Name: <xliff:g id="name" example="Amy">%s</xliff:g>
+    </string>
+    <string name="coffeeOrder_text">
+        Coffee Order for: <xliff:g id="name" example="Amy">%s</xliff:g>
+    </string>
+
+    <string name="hasWhippedCream_text">Has Whipped Cream</string>
+    <string name="hasChocolate_text">Has Chocolate</string>
+    <string name="Yes_text">Yes</string>
+    <string name="No_text">No</string>
+    <string name="totalPrice_text">Total Price</string>
+    <string name="orderSummaryReady_text">The order was already set</string>
+</resources>
