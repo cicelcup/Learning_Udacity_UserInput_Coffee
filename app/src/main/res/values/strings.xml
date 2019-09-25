@@ -25,4 +25,6 @@
     <string name="No_text">No</string>
     <string name="totalPrice_text">Total Price</string>
     <string name="orderSummaryReady_text">The order was already set</string>
+    <string name="No_less_than_one">You cannot have less than 1 coffee</string>
+    <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
 </resources>

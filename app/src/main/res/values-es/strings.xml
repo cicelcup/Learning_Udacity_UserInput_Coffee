@@ -23,6 +23,8 @@
         Nombre: <xliff:g id="name" example="Amy">%s</xliff:g>
     </string>
     <string name="coffeeOrder_text">
-        Orden de café para:: <xliff:g id="name" example="Amy">%s</xliff:g>
+        Orden de café para: <xliff:g id="name" example="Amy">%s</xliff:g>
     </string>
+    <string name="No_less_than_one">No puedes tener menos de un café</string>
+    <string name="No_more_than_ten">No puedes agregar más de diez café</string>
 </resources>

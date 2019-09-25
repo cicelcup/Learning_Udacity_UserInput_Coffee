@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * This app displays an order form to order coffee.
@@ -55,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Ejercicio", name); // show the name value in the log
 
 
-        message = createOrderSummary(calculatePrice(quantity, PRICE_OF_COFFEE, hasWhippedCream, hasChocolat), hasWhippedCream, hasChocolat, name);
+        int priceCalculated = calculatePrice(quantity, PRICE_OF_COFFEE,
+                hasWhippedCream, hasChocolat);
+
+        message = createOrderSummary(priceCalculated, hasWhippedCream, hasChocolat, name);
 
         displayMessage(message);
 
-        Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
+                Toast.LENGTH_LONG).show();
 
         sendEmailButton = (Button)findViewById(R.id.sendEmail_Button_View);
         sendEmailButton.setEnabled(true);
@@ -74,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
      * @param hasChocolat     tiene chocolate
      * @return regresa el precio total (cafes * cantidad)
      */
-    private int calculatePrice(int numberOfCoffee, int price, boolean hasWhippedCream, boolean hasChocolat) {
+    private int calculatePrice(int numberOfCoffee, int price, boolean hasWhippedCream,
+                               boolean hasChocolat) {
         int totalprice = price;
 
         if (hasWhippedCream) {
@@ -99,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
 
-    private String createOrderSummary(int totalPrice, boolean hasWhippedCream, boolean hasChocolat, String name) {
+    private String createOrderSummary(int totalPrice, boolean hasWhippedCream,
+                                      boolean hasChocolat, String name) {
         String summary;
 
         summary = getString(R.string.orderSummary_text) + "\n";
@@ -128,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @param view Incrementa en uno la cantidad de cafes
+     * @param view Incrementa en uno la cantidad de cafe
      */
 
     public void increment(View view) {
@@ -137,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
             display(quantity);
         }
         else{
-            Toast.makeText(getApplicationContext(), "You cannot add more than 10 coffees", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.No_more_than_ten,
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -153,18 +161,25 @@ public class MainActivity extends AppCompatActivity {
             display(quantity);
         }
         else{
-            Toast.makeText(getApplicationContext(), "You cannot have less than 1 coffee", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.No_less_than_one,
+                    Toast.LENGTH_LONG).show();
         }
 
     }
 
+    /*function to send the email of the order*/
+
     public void sendEmail(View view){
+//        Array of emails
         String[] emailAddresses = {"cicelcup@gmail.com","xmoyas@gmail.com"};
+//        New Intent of sending email
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL,emailAddresses);
         intent.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.coffeeOrder_text,name));
         intent.putExtra(Intent.EXTRA_TEXT,message);
+//        Check if it exists an activity to handle the mail sending
+
         if (intent.resolveActivity(getPackageManager())!=null){
             startActivity(intent);
         }
@@ -182,10 +197,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * This method displays the given price on the screen.
+     * This method displays the given price on the screen in USD
      */
     private String displayPrice(int number) {
-        return NumberFormat.getCurrencyInstance().format(number);
+        Locale locale = new Locale("en", "US");
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+
+        return fmt.format(number);
     }
 
     /**
