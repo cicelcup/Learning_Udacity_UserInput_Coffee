@@ -58,7 +58,9 @@
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:textColor="@android:color/white"
                 android:onClick="decrement"
+                android:background="@drawable/round_button"
                 android:text="@string/minusButton" />
 
             <TextView
@@ -73,8 +75,10 @@
 
             <Button
                 android:layout_width="48dp"
+                android:textColor="@android:color/white"
                 android:layout_height="48dp"
                 android:onClick="increment"
+                android:background="@drawable/round_button"
                 android:text="@string/plusButton" />
         </LinearLayout>
 
@@ -97,18 +101,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginRight="16dp"
+                android:textColor="@android:color/white"
                 android:onClick="submitOrder"
-                android:text="@string/order_Button" />
+                android:text="@string/order_Button"
+                android:background="@drawable/round_button"/>
 
             <Button
                 android:id="@+id/sendEmail_Button_View"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:onClick="sendEmail"
+                android:background="@drawable/round_button"
                 android:text="@string/send_Button" />
         </LinearLayout>
     </LinearLayout>

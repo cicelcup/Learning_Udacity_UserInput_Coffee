@@ -6,7 +6,7 @@
     <string name="chocolate_check">Chocolate</string>
     <string name="quantity_text">Quantity</string>
     <string name="orderSummary_text">Order Summary</string>
-    <string name="order_Button">Order Summary</string>
+    <string name="order_Button">Summary</string>
     <string name="send_Button">Send</string>
     <string name="minusButton">-</string>
     <string name="plusButton">+</string>

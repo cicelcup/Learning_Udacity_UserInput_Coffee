@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Café</string>
-    <string name="name_text" translatable="false">Nombre</string>
+    <string name="name_text">Nombre</string>
     <string name="No_text">No</string>
     <string name="Yes_text">Si</string>
     <string name="chocolate_check">Chocolate</string>
@@ -10,7 +10,7 @@
     <string name="minusButton">-</string>
     <string name="orderSummaryReady_text">La orden ya fue tomada</string>
     <string name="orderSummary_text">Resumen de la orden</string>
-    <string name="order_Button">Descripción de la orden</string>
+    <string name="order_Button">Orden</string>
     <string name="plusButton">+</string>
     <string name="quantity_text">Cantidad</string>
     <string name="send_Button">Enviar</string>
