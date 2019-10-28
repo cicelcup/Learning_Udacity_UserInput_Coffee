@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<!--    Spanish words-->
     <string name="app_name">Café</string>
     <string name="name_text">Nombre</string>
     <string name="No_text">No</string>

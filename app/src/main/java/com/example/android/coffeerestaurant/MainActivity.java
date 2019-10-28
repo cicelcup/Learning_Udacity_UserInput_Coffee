@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         //Figure out if the user wants Whipped Cream
-        CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.hasWhippeCream_checkbox_view);
+        CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.hasWhippedCream_checkbox_view);
         boolean hasWhippedCream = whippedCreamBox.isChecked();
 
         //Figure out if the user wants Whipped Cream
-        CheckBox chocolatBox = (CheckBox) findViewById(R.id.hasChocolat_checkbox_view);
+        CheckBox chocolatBox = (CheckBox) findViewById(R.id.hasChocolate_checkbox_view);
         boolean hasChocolat = chocolatBox.isChecked();
 
         //Put the name in the order

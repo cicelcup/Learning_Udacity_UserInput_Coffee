@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--Scroll view for show order more information in the screen-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:androdi="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
+<!--    layout for the objects-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,68 +20,55 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="@string/name_text"
-            android:inputType="textCapSentences" />
+            android:inputType="textCapSentences"
+            android:importantForAutofill="no" />
 
         <TextView
             style="@style/HeaderTextStyle"
             android:text="@string/toppings_text" />
 
         <CheckBox
-            android:id="@+id/hasWhippeCream_checkbox_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
+            android:id="@+id/hasWhippedCream_checkbox_view"
             android:text="@string/whippedCream_check"
-            android:textSize="16sp" />
+            style="@style/checkbox_style" />
 
         <CheckBox
-            android:id="@+id/hasChocolat_checkbox_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
+            android:id="@+id/hasChocolate_checkbox_view"
             android:text="@string/chocolate_check"
-            android:textSize="16sp" />
+            style="@style/checkbox_style" />
 
         <TextView
             style="@style/HeaderTextStyle"
             android:text="@string/quantity_text"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:textColor="@android:color/white"
+                android:layout_toStartOf="@+id/quantity_text_view"
+                android:layout_marginEnd="32dp"
                 android:onClick="decrement"
-                android:background="@drawable/round_button"
-                android:text="@string/minusButton" />
+                android:text="@string/minusButton"
+                style="@style/quantity_buttons" />
 
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/quantity_text_view"
-                android:paddingLeft="8dp"
-                android:paddingTop="16dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
+                android:layout_centerInParent="true"
+                tools:text="10"
                 android:textColor="@android:color/black" />
 
             <Button
-                android:layout_width="48dp"
-                android:textColor="@android:color/white"
-                android:layout_height="48dp"
+                android:layout_toEndOf="@+id/quantity_text_view"
+                android:layout_marginStart="32dp"
                 android:onClick="increment"
-                android:background="@drawable/round_button"
-                android:text="@string/plusButton" />
-        </LinearLayout>
+                android:text="@string/plusButton"
+                style="@style/quantity_buttons" />
+        </RelativeLayout>
 
         <TextView
             style="@style/HeaderTextStyle"
@@ -90,7 +78,6 @@
             android:id="@+id/order_summary_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:textSize="16sp"
             android:textColor="@android:color/black"/>
@@ -101,25 +88,16 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="16dp"
-                android:textColor="@android:color/white"
                 android:onClick="submitOrder"
                 android:text="@string/order_Button"
-                android:background="@drawable/round_button"/>
+                style="@style/custom_button" />
 
             <Button
                 android:id="@+id/sendEmail_Button_View"
-                android:layout_width="match_parent"
-                android:textColor="@android:color/white"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:enabled="false"
                 android:onClick="sendEmail"
-                android:background="@drawable/round_button"
-                android:text="@string/send_Button" />
+                android:text="@string/send_Button"
+                style="@style/custom_button" />
         </LinearLayout>
     </LinearLayout>
 
