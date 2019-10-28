@@ -1,4 +1,4 @@
-package com.example.android.coffeerestaurant;
+package com.example.android.coffee;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
