@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-<!-- English words-->
+    <!-- English words-->
     <string name="app_name">Coffee Restaurant</string>
     <string name="name_text">Name</string>
     <string name="toppings_text">Topping</string>
@@ -15,7 +15,7 @@
     <string name="thanksOrder_Text">Thanks for your order!</string>
     <string name="orderSummaryName_text">"Name: "</string>
     <string name="coffeeOrder_text">
-        Coffee Order for: <xliff:g id="name" example="Amy">%s</xliff:g>
+        Coffee Order for: <xliff:g example="Amy" id="name">%s</xliff:g>
     </string>
     <string name="hasWhippedCream_text">"Has Whipped Cream: "</string>
     <string name="hasChocolate_text">"Has Chocolate: "</string>
@@ -25,4 +25,5 @@
     <string name="orderSummaryReady_text">The order was already set</string>
     <string name="No_less_than_one">You cannot have less than 1 coffee</string>
     <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
+    <string name="settings_menu_item">Settings</string>
 </resources>

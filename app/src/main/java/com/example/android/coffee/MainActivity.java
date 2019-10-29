@@ -14,6 +14,8 @@ import android.text.style.BulletSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -44,6 +46,29 @@ public class MainActivity extends AppCompatActivity {
     boolean hasWhippedCream;
     boolean hasChocolate;
     Button sendEmailButton;
+
+//    Create the menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Menu main is a layout created
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    //open the menu selected
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //Check if setting was pressed
+        if (id == R.id.actions_settings) {
+            //Open a new activity for setting the configurations
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            //open the settings activity
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {

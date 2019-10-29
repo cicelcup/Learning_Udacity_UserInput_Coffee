@@ -26,4 +26,5 @@
     </string>
     <string name="No_less_than_one">No puedes tener menos de un café</string>
     <string name="No_more_than_ten">No puedes agregar más de diez cafés</string>
+    <string name="settings_menu_item">Configuración</string>
 </resources>
