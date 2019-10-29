@@ -5,9 +5,12 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.AlignmentSpan;
+import android.text.style.BulletSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -28,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 //    Constants to save the Instance
     final static String NAME = "name";
     final static String QUANTITY = "amount";
-    final static String CREAM = "cream";
-    final static String CHOCOLATE = "chocolate";
+    final static String HAS_WHIPPED_CREAM = "cream";
+    final static String HAS_CHOCOLATE = "chocolate";
 
 //    Constants to define the price of the ingredients
     static int PRICE_OF_COFFEE = 5;
@@ -47,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         // Save the user's current score
         savedInstanceState.putString(NAME,name);
         savedInstanceState.putInt(QUANTITY,quantity);
-        savedInstanceState.putBoolean(CREAM,hasWhippedCream);
-        savedInstanceState.putBoolean(CHOCOLATE,hasChocolate);
+        savedInstanceState.putBoolean(HAS_WHIPPED_CREAM,hasWhippedCream);
+        savedInstanceState.putBoolean(HAS_CHOCOLATE,hasChocolate);
 
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -69,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState!=null){
             name = savedInstanceState.getString(NAME);
             quantity = savedInstanceState.getInt(QUANTITY);
-            hasWhippedCream = savedInstanceState.getBoolean(CREAM);
-            hasChocolate = savedInstanceState.getBoolean(CHOCOLATE);
+            hasWhippedCream = savedInstanceState.getBoolean(HAS_WHIPPED_CREAM);
+            hasChocolate = savedInstanceState.getBoolean(HAS_CHOCOLATE);
         }
         else{
             name = "";
@@ -154,55 +157,67 @@ public class MainActivity extends AppCompatActivity {
                                       boolean hasChocolate, String name) {
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
-        sp.append(formatText(getString(R.string.orderSummaryName_text)));
+        sp.append(formatText(getString(R.string.orderSummaryName_text),true));
         sp.append(name).append("\n");
-        sp.append(formatText(getString(R.string.quantity_text)));
+        sp.append(formatText(getString(R.string.quantity_text),true));
         sp.append(String.valueOf(quantity)).append("\n");
 
         if(hasWhippedCream) {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text)));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text),true));
             sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text)));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text),true));
             sp.append(getString(R.string.No_text)).append("\n");
         }
 
         if(hasChocolate) {
-            sp.append(formatText(getString(R.string.hasChocolate_text)));
+            sp.append(formatText(getString(R.string.hasChocolate_text),true));
             sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasChocolate_text)));
+            sp.append(formatText(getString(R.string.hasChocolate_text),true));
             sp.append(getString(R.string.No_text)).append("\n");
         }
 
-        sp.append(formatText(getString(R.string.totalPrice_text)));
+        sp.append(formatText(getString(R.string.totalPrice_text),true));
         sp.append(displayPrice(totalPrice)).append("\n");
 
-        sp.append(formatText(getString(R.string.thanksOrder_Text)));
+        sp.append(formatText(getString(R.string.thanksOrder_Text),false));
 
         return sp;
     }
 
-    private SpannableStringBuilder formatText(String text) {
+    private SpannableStringBuilder formatText(String text,boolean optionCenter) {
 
         //        Variable to format the string in different ways
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
 //        Variable to bold text
-        StyleSpan boldText = new StyleSpan(Typeface.BOLD);
+        StyleSpan boldText = new StyleSpan(Typeface.ITALIC);
 
 //        Variable to color text
         ForegroundColorSpan colorText = new ForegroundColorSpan(
-                getResources().getColor(R.color.colorPrimaryDark));
+                getResources().getColor(R.color.colorPrimary));
+
 
         sp.append(text);
         int start = 0;
         sp.setSpan(boldText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         sp.setSpan(colorText,start,sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        if (optionCenter) {
+            BulletSpan bulletText = new BulletSpan(
+                    16,getResources().getColor(R.color.colorPrimaryDark));
+            sp.setSpan(bulletText, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        else{
+            AlignmentSpan t = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
+            sp.setSpan(t, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
         return sp;
     }
 
