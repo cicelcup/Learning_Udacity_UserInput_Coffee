@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 //    Constants to save the Instance
     final static String NAME = "name";
     final static String QUANTITY = "amount";
-    final static String HASWHIPPEDCREAM = "cream";
-    final static String HASCHOCOLATE= "chocolate";
+    final static String CREAM = "cream";
+    final static String CHOCOLATE = "chocolate";
 
 //    Constants to define the price of the ingredients
     static int PRICE_OF_COFFEE = 5;
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         // Save the user's current score
         savedInstanceState.putString(NAME,name);
         savedInstanceState.putInt(QUANTITY,quantity);
-        savedInstanceState.putBoolean(HASWHIPPEDCREAM,hasWhippedCream);
-        savedInstanceState.putBoolean(HASCHOCOLATE,hasChocolate);
+        savedInstanceState.putBoolean(CREAM,hasWhippedCream);
+        savedInstanceState.putBoolean(CHOCOLATE,hasChocolate);
 
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -58,19 +58,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gettingIntanceState(savedInstanceState);
+        gettingInstanceState(savedInstanceState);
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
-//    Gettint the state of the current activity
-    private void gettingIntanceState(Bundle savedInstanceState) {
+//    Getting the state of the current activity
+    private void gettingInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState!=null){
             name = savedInstanceState.getString(NAME);
             quantity = savedInstanceState.getInt(QUANTITY);
-            hasWhippedCream = savedInstanceState.getBoolean(HASWHIPPEDCREAM);
-            hasChocolate = savedInstanceState.getBoolean(HASCHOCOLATE);
+            hasWhippedCream = savedInstanceState.getBoolean(CREAM);
+            hasChocolate = savedInstanceState.getBoolean(CHOCOLATE);
         }
         else{
             name = "";
@@ -155,32 +155,32 @@ public class MainActivity extends AppCompatActivity {
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
         sp.append(formatText(getString(R.string.orderSummaryName_text)));
-        sp.append(name + "\n");
+        sp.append(name).append("\n");
         sp.append(formatText(getString(R.string.quantity_text)));
-        sp.append(quantity + "\n");
+        sp.append(String.valueOf(quantity)).append("\n");
 
         if(hasWhippedCream) {
             sp.append(formatText(getString(R.string.hasWhippedCream_text)));
-            sp.append(getString(R.string.Yes_text) + "\n");
+            sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
             sp.append(formatText(getString(R.string.hasWhippedCream_text)));
-            sp.append(getString(R.string.No_text) + "\n");
+            sp.append(getString(R.string.No_text)).append("\n");
         }
 
         if(hasChocolate) {
             sp.append(formatText(getString(R.string.hasChocolate_text)));
-            sp.append(getString(R.string.Yes_text) + "\n");
+            sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
             sp.append(formatText(getString(R.string.hasChocolate_text)));
-            sp.append(getString(R.string.No_text) + "\n");
+            sp.append(getString(R.string.No_text)).append("\n");
         }
 
         sp.append(formatText(getString(R.string.totalPrice_text)));
-        sp.append(displayPrice(totalPrice) + "\n");
+        sp.append(displayPrice(totalPrice)).append("\n");
 
         sp.append(formatText(getString(R.string.thanksOrder_Text)));
 
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SpannableStringBuilder formatText(String text) {
 
-        //        Variable to format the string in differents ways
+        //        Variable to format the string in different ways
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
 //        Variable to bold text
