@@ -34,7 +34,7 @@
 
     <!-- Strings for cream price -->
     <string name="whipped_cream_price_title">Whipped Cream Price</string>
-    <string name="whipped_cream_price" translatable="false">cream_price</string>
+    <string name="whipped_cream_price_key" translatable="false">cream_price</string>
     <string name="whipped_cream_price_default" translatable="false">1</string>
 
     <!-- Strings for chocolate price -->

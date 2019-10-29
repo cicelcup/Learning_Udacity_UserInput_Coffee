@@ -1,9 +1,11 @@
 package com.example.android.coffee;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.text.Spannable;
@@ -87,12 +89,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gettingInstanceState(savedInstanceState);
+        gettingPreference();
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
-//    Getting the state of the current activity
+    private void gettingPreference() {
+        SharedPreferences sharedPreferences = PreferenceManager.
+                getDefaultSharedPreferences(this);
+
+        String l = sharedPreferences.getString(
+                getString(R.string.coffee_price_key),
+                getString(R.string.coffee_price_default));
+
+        String m = sharedPreferences.getString(
+                getString(R.string.whipped_cream_price_key),
+                getString(R.string.whipped_cream_price_default));
+
+        String n = sharedPreferences.getString(
+                getString(R.string.chocolate_price_key),
+                getString(R.string.chocolate_price_default));
+
+        String o = sharedPreferences.getString(
+                getString(R.string.email_key),
+                getString(R.string.email_default));
+    }
+
+    //    Getting the state of the current activity
     private void gettingInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState!=null){
             name = savedInstanceState.getString(NAME);

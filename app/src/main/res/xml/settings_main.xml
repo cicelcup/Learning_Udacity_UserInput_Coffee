@@ -11,16 +11,16 @@
         android:selectAllOnFocus="true"/>
 
     <EditTextPreference
-        android:key="@string/chocolate_price_key"
-        android:title="@string/chocolate_price_title"
-        android:defaultValue="@string/chocolate_price_default"
+        android:key="@string/whipped_cream_price_key"
+        android:title="@string/whipped_cream_price_title"
+        android:defaultValue="@string/whipped_cream_price_default"
         android:inputType="numberDecimal"
         android:selectAllOnFocus="true"/>
 
     <EditTextPreference
-        android:key="@string/whipped_cream_price"
-        android:title="@string/whipped_cream_price_title"
-        android:defaultValue="@string/whipped_cream_price_default"
+        android:key="@string/chocolate_price_key"
+        android:title="@string/chocolate_price_title"
+        android:defaultValue="@string/chocolate_price_default"
         android:inputType="numberDecimal"
         android:selectAllOnFocus="true"/>
 
