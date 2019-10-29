@@ -1,9 +1,15 @@
 package com.example.android.coffee;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         gettingIntanceState(savedInstanceState);
 
         display(quantity);
-        displayMessage(getString(R.string.notOrderYet_Text));
+        displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
 //    Gettint the state of the current activity
@@ -95,9 +101,12 @@ public class MainActivity extends AppCompatActivity {
         int priceCalculated = calculatePrice(quantity, PRICE_OF_COFFEE,
                 hasWhippedCream, hasChocolate);
 
-        message = createOrderSummary(priceCalculated, hasWhippedCream, hasChocolate, name);
+        SpannableStringBuilder sp = createOrderSummary(priceCalculated,
+                hasWhippedCream, hasChocolate, name);
 
-        displayMessage(message);
+        message = sp.toString();
+
+        displayMessage(sp);
 
         Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
                 Toast.LENGTH_LONG).show();
@@ -141,33 +150,79 @@ public class MainActivity extends AppCompatActivity {
      * @return summary string to display on screen
      */
 
-    private String createOrderSummary(int totalPrice, boolean hasWhippedCream,
+    private SpannableStringBuilder createOrderSummary(int totalPrice, boolean hasWhippedCream,
                                       boolean hasChocolate, String name) {
-        String summary;
+        SpannableStringBuilder sp = new SpannableStringBuilder();
 
-        summary = getString(R.string.orderSummary_text) + "\n";
-        summary += getString(R.string.orderSummaryName_text,name)+ "\n";
-        summary += getString(R.string.quantity_text) +": " + quantity + "\n";
+        sp.append(formatText(getString(R.string.orderSummary_text)+"\n"));
+        sp.append(formatText(getString(R.string.orderSummaryName_text,name)+ "\n"));
+        sp.append(formatText(getString(R.string.quantity_text) +": "));
+        sp.append(quantity + "\n");
+
         if(hasWhippedCream) {
-            summary += getString(R.string.hasWhippedCream_text) + ": " + getString(R.string.Yes_text) + "\n";
+            sp.append(formatText(getString(R.string.hasWhippedCream_text) + ": "));
+            sp.append(getString(R.string.Yes_text) + "\n");
         }
         else
         {
-            summary += getString(R.string.hasWhippedCream_text) + ": " + getString(R.string.No_text) + "\n";
+            sp.append(formatText(getString(R.string.hasWhippedCream_text) + ": "));
+            sp.append(getString(R.string.No_text) + "\n");
         }
 
         if(hasChocolate) {
-            summary += getString(R.string.hasChocolate_text) + ": " + getString(R.string.Yes_text) + "\n";
+            sp.append(formatText(getString(R.string.hasChocolate_text) + ": "));
+            sp.append(getString(R.string.Yes_text) + "\n");
         }
         else
         {
-            summary += getString(R.string.hasChocolate_text) + ": " + getString(R.string.No_text) + "\n";
+            sp.append(formatText(getString(R.string.hasChocolate_text) + ": "));
+            sp.append(getString(R.string.No_text) + "\n");
         }
 
+        sp.append(formatText(getString(R.string.totalPrice_text)+ ": "));
+        sp.append(displayPrice(totalPrice) + "\n");
 
-        summary += getString(R.string.totalPrice_text) + ": " + displayPrice(totalPrice) + "\n";
-        summary += getString(R.string.thanksOrder_Text);
-        return summary;
+        sp.append(formatText(getString(R.string.thanksOrder_Text)));
+
+        return sp;
+    }
+
+    private SpannableStringBuilder formatText(String text) {
+
+        //        Variable to format the string in differents ways
+        SpannableStringBuilder sp = new SpannableStringBuilder();
+
+//        Variable to bold text
+        StyleSpan boldText = new StyleSpan(Typeface.BOLD);
+
+//        Variable to color text
+        ForegroundColorSpan colorText = new ForegroundColorSpan(
+                getResources().getColor(R.color.colorPrimaryDark));
+
+        sp.append(text);
+        int start = 0;
+        sp.setSpan(boldText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sp.setSpan(colorText,start,sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return sp;
+    }
+
+    /**
+     * This method displays the given price on the screen in USD
+     */
+    private String displayPrice(int number) {
+        Locale locale = new Locale("en", "US");
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+
+        return fmt.format(number);
+    }
+
+    /**
+     * This method displays the message for the order
+     */
+
+    private void displayMessage(SpannableStringBuilder sp) {
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(sp);
     }
 
     /**
@@ -204,6 +259,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void display(int number) {
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.format(Locale.getDefault(),"%d",number));
+    }
+
     /*function to send the email of the order*/
 
     public void sendEmail(View view){
@@ -221,34 +284,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         sendEmailButton.setEnabled(false);
-        displayMessage(getString(R.string.notOrderYet_Text));
+        displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void display(int number) {
-        TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText(String.format(Locale.getDefault(),"%d",number));
-    }
-
-
-    /**
-     * This method displays the given price on the screen in USD
-     */
-    private String displayPrice(int number) {
-        Locale locale = new Locale("en", "US");
-        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-
-        return fmt.format(number);
-    }
-
-    /**
-     * This method displays the message for the order
-     */
-
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
 }
