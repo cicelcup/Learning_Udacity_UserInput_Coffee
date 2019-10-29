@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -20,20 +19,59 @@ import java.util.Locale;
  */
 public class MainActivity extends AppCompatActivity {
 
+//    Constants to save the Instance
+    final static String NAME = "name";
+    final static String QUANTITY = "amount";
+    final static String HASWHIPPEDCREAM = "cream";
+    final static String HASCHOCOLATE= "chocolate";
+
+//    Constants to define the price of the ingredients
     static int PRICE_OF_COFFEE = 5;
     static int PRICE_OF_CHOCOLATE = 2;
     static int PRICE_OF_WHIPPED_CREAM = 1;
-    int quantity = 1;
+    int quantity;
     String message;
     String name;
+    boolean hasWhippedCream;
+    boolean hasChocolate;
     Button sendEmailButton;
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current score
+        savedInstanceState.putString(NAME,name);
+        savedInstanceState.putInt(QUANTITY,quantity);
+        savedInstanceState.putBoolean(HASWHIPPEDCREAM,hasWhippedCream);
+        savedInstanceState.putBoolean(HASCHOCOLATE,hasChocolate);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gettingIntanceState(savedInstanceState);
+
         display(quantity);
         displayMessage(getString(R.string.notOrderYet_Text));
+    }
+
+//    Gettint the state of the current activity
+    private void gettingIntanceState(Bundle savedInstanceState) {
+        if (savedInstanceState!=null){
+            name = savedInstanceState.getString(NAME);
+            quantity = savedInstanceState.getInt(QUANTITY);
+            hasWhippedCream = savedInstanceState.getBoolean(HASWHIPPEDCREAM);
+            hasChocolate = savedInstanceState.getBoolean(HASCHOCOLATE);
+        }
+        else{
+            name = "";
+            quantity = 1;
+            hasWhippedCream = false;
+            hasChocolate = false;
+        }
     }
 
     /**
@@ -42,19 +80,17 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         //Figure out if the user wants Whipped Cream
         CheckBox whippedCreamBox = findViewById(R.id.hasWhippedCream_checkbox_view);
-        boolean hasWhippedCream = whippedCreamBox.isChecked();
+        hasWhippedCream = whippedCreamBox.isChecked();
 
         //Figure out if the user wants Whipped Cream
         CheckBox chocolateBox =  findViewById(R.id.hasChocolate_checkbox_view);
-        boolean hasChocolate = chocolateBox.isChecked();
+        hasChocolate = chocolateBox.isChecked();
 
         //Put the name in the order
         EditText nameBox = findViewById(R.id.name_editText_view);
         name = nameBox.getText().toString();
 
-
         Log.i("Exercise", name); // show the name value in the log
-
 
         int priceCalculated = calculatePrice(quantity, PRICE_OF_COFFEE,
                 hasWhippedCream, hasChocolate);
