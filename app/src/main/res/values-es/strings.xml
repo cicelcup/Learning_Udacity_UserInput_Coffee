@@ -27,4 +27,8 @@
     <string name="No_less_than_one">No puedes tener menos de un café</string>
     <string name="No_more_than_ten">No puedes agregar más de diez cafés</string>
     <string name="settings_menu">Configuración</string>
+    <string name="chocolate_price_label">Precio del Café</string>
+    <string name="coffee_price_label">Precio del Chocolate</string>
+    <string name="cream_price_label">Precio de la Crema Batida</string>
+    <string name="email_label">Correo Electrónico</string>
 </resources>
