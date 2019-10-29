@@ -28,22 +28,22 @@
     <string name="settings_menu">Settings</string>
 
     <!-- Strings for coffee price -->
-    <string name="coffee_price_label">Coffee Price</string>
+    <string name="coffee_price_title">Coffee Price</string>
     <string name="coffee_price_key" translatable="false">coffee_price</string>
-    <string name="coffe_price_default" translatable="false">5</string>
+    <string name="coffee_price_default" translatable="false">5</string>
 
     <!-- Strings for cream price -->
-    <string name="cream_price_label">Chocolate Price</string>
-    <string name="cream_price_key" translatable="false">cream_price</string>
-    <string name="cream_price_default" translatable="false">1</string>
+    <string name="whipped_cream_price_title">Whipped Cream Price</string>
+    <string name="whipped_cream_price" translatable="false">cream_price</string>
+    <string name="whipped_cream_price_default" translatable="false">1</string>
 
     <!-- Strings for chocolate price -->
-    <string name="chocolate_price_label">Coffee Price</string>
+    <string name="chocolate_price_title">Chocolate Price</string>
     <string name="chocolate_price_key" translatable="false">chocolate_price</string>
     <string name="chocolate_price_default" translatable="false">2</string>
 
     <!-- Strings for origin email-->
-    <string name="email_label">Email</string>
+    <string name="email_title">Sender\'s email</string>
     <string name="email_key" translatable="false">email</string>
     <string name="email_default" translatable="false">cicelcup@hotmail.com</string>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_menu">
+
+    <EditTextPreference
+        android:key="@string/coffee_price_key"
+        android:title="@string/coffee_price_title"
+        android:defaultValue="@string/coffee_price_default"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"/>
+
+    <EditTextPreference
+        android:key="@string/chocolate_price_key"
+        android:title="@string/chocolate_price_title"
+        android:defaultValue="@string/chocolate_price_default"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"/>
+
+    <EditTextPreference
+        android:key="@string/whipped_cream_price"
+        android:title="@string/whipped_cream_price_title"
+        android:defaultValue="@string/whipped_cream_price_default"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"/>
+
+    <EditTextPreference
+        android:key="@string/email_key"
+        android:title="@string/email_title"
+        android:defaultValue="@string/email_default"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="false"/>
+</PreferenceScreen>
