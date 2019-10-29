@@ -21,7 +21,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     static int PRICE_OF_COFFEE = 5;
-    static int PRICE_OF_CHOCOLAT = 2;
+    static int PRICE_OF_CHOCOLATE = 2;
     static int PRICE_OF_WHIPPED_CREAM = 1;
     int quantity = 1;
     String message;
@@ -41,72 +41,72 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         //Figure out if the user wants Whipped Cream
-        CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.hasWhippedCream_checkbox_view);
+        CheckBox whippedCreamBox = findViewById(R.id.hasWhippedCream_checkbox_view);
         boolean hasWhippedCream = whippedCreamBox.isChecked();
 
         //Figure out if the user wants Whipped Cream
-        CheckBox chocolatBox = (CheckBox) findViewById(R.id.hasChocolate_checkbox_view);
-        boolean hasChocolat = chocolatBox.isChecked();
+        CheckBox chocolateBox =  findViewById(R.id.hasChocolate_checkbox_view);
+        boolean hasChocolate = chocolateBox.isChecked();
 
         //Put the name in the order
-        EditText nameBox = (EditText) findViewById(R.id.name_editText_view);
+        EditText nameBox = findViewById(R.id.name_editText_view);
         name = nameBox.getText().toString();
 
 
-        Log.i("Ejercicio", name); // show the name value in the log
+        Log.i("Exercise", name); // show the name value in the log
 
 
         int priceCalculated = calculatePrice(quantity, PRICE_OF_COFFEE,
-                hasWhippedCream, hasChocolat);
+                hasWhippedCream, hasChocolate);
 
-        message = createOrderSummary(priceCalculated, hasWhippedCream, hasChocolat, name);
+        message = createOrderSummary(priceCalculated, hasWhippedCream, hasChocolate, name);
 
         displayMessage(message);
 
         Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
                 Toast.LENGTH_LONG).show();
 
-        sendEmailButton = (Button)findViewById(R.id.sendEmail_Button_View);
+        sendEmailButton = findViewById(R.id.sendEmail_Button_View);
         sendEmailButton.setEnabled(true);
     }
 
     /**
-     * Calcula el precio del cafe
+     * Set the price coffee
      *
-     * @param numberOfCoffee  cantidad de cafes
-     * @param price           precio unitario
-     * @param hasWhippedCream Tiene crema batida
-     * @param hasChocolat     tiene chocolate
-     * @return regresa el precio total (cafes * cantidad)
+     * @param numberOfCoffee  quantity of coffee
+     * @param price           unit price
+     * @param hasWhippedCream Has it Whipped Cream
+     * @param hasChocolate     Has it Chocolate
+     * @return return total price (coffee * quantity)
      */
     private int calculatePrice(int numberOfCoffee, int price, boolean hasWhippedCream,
-                               boolean hasChocolat) {
-        int totalprice = price;
+                               boolean hasChocolate) {
+        int totalPrice = price;
 
         if (hasWhippedCream) {
-            totalprice += PRICE_OF_WHIPPED_CREAM;
+            totalPrice += PRICE_OF_WHIPPED_CREAM;
         }
 
-        if (hasChocolat) {
-            totalprice += PRICE_OF_CHOCOLAT;
+        if (hasChocolate) {
+            totalPrice += PRICE_OF_CHOCOLATE;
         }
 
 
-        return numberOfCoffee * totalprice;
+        return numberOfCoffee * totalPrice;
     }
 
     /**
-     * Crea un sumario de la orden
+     * Create a order summary
      *
-     * @param totalPrice el precio total de la orden
-     * @param hasWhippedCream Indica si tiene crema batida o no
-     * @param hasChocolat Insdica si tiene chocolate o no
-     * @param name
-     * @return
+     * @param totalPrice is the total price of the order
+     * @param hasWhippedCream it says if the order has whipped cream
+     * @param hasChocolate it says if the order has chocolate
+     * @param name it says the name of the order
+     * @return summary string to display on screen
      */
 
     private String createOrderSummary(int totalPrice, boolean hasWhippedCream,
-                                      boolean hasChocolat, String name) {
+                                      boolean hasChocolate, String name) {
         String summary;
 
         summary = getString(R.string.orderSummary_text) + "\n";
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             summary += getString(R.string.hasWhippedCream_text) + ": " + getString(R.string.No_text) + "\n";
         }
 
-        if(hasChocolat) {
+        if(hasChocolate) {
             summary += getString(R.string.hasChocolate_text) + ": " + getString(R.string.Yes_text) + "\n";
         }
         else
@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @param view Incrementa en uno la cantidad de cafe
+     * Increase in one the amount of coffee
+     * @param view the text where is indicated the amount of coffee
      */
 
     public void increment(View view) {
@@ -151,9 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Reduce en 1 la cantidad de cafes
+     * Reduce in one the amount of coffee
      *
-     * @param view
+     * @param view the text where is indicated the amount of coffee
      */
     public void decrement(View view) {
         if (quantity > 1) {
@@ -191,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.format(Locale.getDefault(),"%d",number));
     }
 
 
@@ -211,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
 }
