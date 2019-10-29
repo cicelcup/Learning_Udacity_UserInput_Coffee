@@ -154,32 +154,32 @@ public class MainActivity extends AppCompatActivity {
                                       boolean hasChocolate, String name) {
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
-        sp.append(formatText(getString(R.string.orderSummary_text)+"\n"));
-        sp.append(formatText(getString(R.string.orderSummaryName_text,name)+ "\n"));
-        sp.append(formatText(getString(R.string.quantity_text) +": "));
+        sp.append(formatText(getString(R.string.orderSummaryName_text)));
+        sp.append(name + "\n");
+        sp.append(formatText(getString(R.string.quantity_text)));
         sp.append(quantity + "\n");
 
         if(hasWhippedCream) {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text) + ": "));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text)));
             sp.append(getString(R.string.Yes_text) + "\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text) + ": "));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text)));
             sp.append(getString(R.string.No_text) + "\n");
         }
 
         if(hasChocolate) {
-            sp.append(formatText(getString(R.string.hasChocolate_text) + ": "));
+            sp.append(formatText(getString(R.string.hasChocolate_text)));
             sp.append(getString(R.string.Yes_text) + "\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasChocolate_text) + ": "));
+            sp.append(formatText(getString(R.string.hasChocolate_text)));
             sp.append(getString(R.string.No_text) + "\n");
         }
 
-        sp.append(formatText(getString(R.string.totalPrice_text)+ ": "));
+        sp.append(formatText(getString(R.string.totalPrice_text)));
         sp.append(displayPrice(totalPrice) + "\n");
 
         sp.append(formatText(getString(R.string.thanksOrder_Text)));
@@ -277,7 +277,8 @@ public class MainActivity extends AppCompatActivity {
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL,emailAddresses);
         intent.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.coffeeOrder_text,name));
-        intent.putExtra(Intent.EXTRA_TEXT,message);
+        intent.putExtra(Intent.EXTRA_TEXT,
+                getString(R.string.orderSummary_text) + ": \n" + message);
 //        Check if it exists an activity to handle the mail sending
 
         if (intent.resolveActivity(getPackageManager())!=null){

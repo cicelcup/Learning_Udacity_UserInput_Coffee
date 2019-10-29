@@ -5,7 +5,7 @@
     <string name="toppings_text">Topping</string>
     <string name="whippedCream_check">Whipped Cream</string>
     <string name="chocolate_check">Chocolate</string>
-    <string name="quantity_text">Quantity</string>
+    <string name="quantity_text">"Quantity: "</string>
     <string name="orderSummary_text">Order Summary</string>
     <string name="order_Button">Summary</string>
     <string name="send_Button">Send</string>
@@ -13,17 +13,15 @@
     <string name="plusButton">+</string>
     <string name="notOrderYet_Text">Not order yet</string>
     <string name="thanksOrder_Text">Thanks for your order!</string>
-    <string name="orderSummaryName_text">
-        Name: <xliff:g id="name" example="Amy">%s</xliff:g>
-    </string>
+    <string name="orderSummaryName_text">"Name: "</string>
     <string name="coffeeOrder_text">
         Coffee Order for: <xliff:g id="name" example="Amy">%s</xliff:g>
     </string>
-    <string name="hasWhippedCream_text">Has Whipped Cream</string>
-    <string name="hasChocolate_text">Has Chocolate</string>
+    <string name="hasWhippedCream_text">"Has Whipped Cream: "</string>
+    <string name="hasChocolate_text">"Has Chocolate: "</string>
     <string name="Yes_text">Yes</string>
     <string name="No_text">No</string>
-    <string name="totalPrice_text">Total Price</string>
+    <string name="totalPrice_text">"Total Price: "</string>
     <string name="orderSummaryReady_text">The order was already set</string>
     <string name="No_less_than_one">You cannot have less than 1 coffee</string>
     <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
