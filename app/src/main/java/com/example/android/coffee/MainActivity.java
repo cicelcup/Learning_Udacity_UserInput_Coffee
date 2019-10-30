@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     final static String HAS_CHOCOLATE = "chocolate";
 
 //    Variable to define the price of the ingredients
-    int price_of_coffee = 7;
-    int price_of_chocolate = 4;
-    int price_of_whipped_cream = 2;
+    int coffee_price;
+    int chocolate_price;
+    int whipped_cream_price;
 
 //    variables of the current values input for the user
     int quantity;
@@ -91,27 +91,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gettingInstanceState(savedInstanceState);
-        gettingPreference();
+        gettingPreferences();
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
-    private void gettingPreference() {
+    private void gettingPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.
                 getDefaultSharedPreferences(this);
 
-        String l = sharedPreferences.getString(
+        String stringPreferenceValue;
+        stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.coffee_price_key),
                 getString(R.string.coffee_price_default));
 
-        String m = sharedPreferences.getString(
+        assert stringPreferenceValue != null;
+        coffee_price = Integer.parseInt(stringPreferenceValue);
+
+        stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.whipped_cream_price_key),
                 getString(R.string.whipped_cream_price_default));
 
-        String n = sharedPreferences.getString(
+        assert stringPreferenceValue != null;
+        whipped_cream_price = Integer.parseInt(stringPreferenceValue);
+
+        stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.chocolate_price_key),
                 getString(R.string.chocolate_price_default));
+        assert stringPreferenceValue != null;
+        chocolate_price = Integer.parseInt(stringPreferenceValue);
 
         String o = sharedPreferences.getString(
                 getString(R.string.email_key),
@@ -152,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("Exercise", name); // show the name value in the log
 
-        int priceCalculated = calculatePrice(quantity, price_of_coffee,
+        int priceCalculated = calculatePrice(quantity, coffee_price,
                 hasWhippedCream, hasChocolate);
 
         SpannableStringBuilder sp = createOrderSummary(priceCalculated,
@@ -183,11 +192,11 @@ public class MainActivity extends AppCompatActivity {
         int totalPrice = price;
 
         if (hasWhippedCream) {
-            totalPrice += price_of_whipped_cream;
+            totalPrice += whipped_cream_price;
         }
 
         if (hasChocolate) {
-            totalPrice += price_of_chocolate;
+            totalPrice += chocolate_price;
         }
 
 
