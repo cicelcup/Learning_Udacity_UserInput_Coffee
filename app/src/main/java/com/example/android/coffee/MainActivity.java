@@ -139,33 +139,47 @@ public class MainActivity extends AppCompatActivity {
                 getDefaultSharedPreferences(this);
 
 //        coffee price
-        String stringPreferenceValue;
-        stringPreferenceValue = sharedPreferences.getString(
+        String coffee_value;
+        coffee_value = sharedPreferences.getString(
                 getString(R.string.coffee_price_key),
                 getString(R.string.coffee_price_default));
 
-        assert stringPreferenceValue != null;
-        coffee_price = Integer.parseInt(stringPreferenceValue);
+        assert coffee_value != null;
+        coffee_price = Integer.parseInt(coffee_value);
 
 //        whipped cream price
-        stringPreferenceValue = sharedPreferences.getString(
+        String whipped_cream_value = sharedPreferences.getString(
                 getString(R.string.whipped_cream_price_key),
                 getString(R.string.whipped_cream_price_default));
 
-        assert stringPreferenceValue != null;
-        whipped_cream_price = Integer.parseInt(stringPreferenceValue);
+        assert whipped_cream_value != null;
+        whipped_cream_price = Integer.parseInt(whipped_cream_value);
 
 //        chocolate price
-        stringPreferenceValue = sharedPreferences.getString(
+        String chocolate_value = sharedPreferences.getString(
                 getString(R.string.chocolate_price_key),
                 getString(R.string.chocolate_price_default));
-        assert stringPreferenceValue != null;
-        chocolate_price = Integer.parseInt(stringPreferenceValue);
+        assert chocolate_value != null;
+        chocolate_price = Integer.parseInt(chocolate_value);
 
 //        email
         email = sharedPreferences.getString(
                 getString(R.string.email_key),
                 getString(R.string.email_default));
+
+        SpannableStringBuilder sp = new SpannableStringBuilder();
+        sp.append(getString(R.string.coffee_name)).append(": ");
+        sp.append(displayPrice(chocolate_price)).append("   ");
+
+        sp.append(getString(R.string.whippedCream_check)).append(": ");
+        sp.append(displayPrice(whipped_cream_price)).append("   ");
+
+        sp.append(getString(R.string.chocolate_check)).append(": ");
+        sp.append(displayPrice(chocolate_price));
+//        sp.append(formatText(getString(R.string.quantity_text),true));
+
+        TextView prices_text_view = findViewById(R.id.prices);
+        prices_text_view.setText(sp);
     }
 
     /**
@@ -363,6 +377,7 @@ public class MainActivity extends AppCompatActivity {
     private String displayPrice(int number) {
         Locale locale = new Locale("en", "US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+        fmt.setMaximumFractionDigits(0);
         return fmt.format(number);
     }
 

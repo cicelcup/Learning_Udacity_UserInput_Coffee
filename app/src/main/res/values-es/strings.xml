@@ -35,4 +35,5 @@
     <string name="email_title">Correo electrónico de destino</string>
     <string name="no_email_software">No hay programas para enviar correos</string>
     <string name="prices_text">Precios</string>
+    <string name="coffee_name">Café</string>
 </resources>

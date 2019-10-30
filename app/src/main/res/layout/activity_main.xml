@@ -31,9 +31,10 @@
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:id="@+id/prices"
             android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
             tools:text="Cafe: 5$"
             android:textColor="@android:color/black" />
 
