@@ -108,13 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    in on resume is getting the preferences of the activity (on resume comes after on create)
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gettingPreferences();
-    }
-
 //    on create of the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
+    }
+
+    //    on resume is getting the preferences of the activity (on resume comes after on create)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gettingPreferences();
     }
 
 //    function to getting the preferences
@@ -165,6 +165,40 @@ public class MainActivity extends AppCompatActivity {
         String o = sharedPreferences.getString(
                 getString(R.string.email_key),
                 getString(R.string.email_default));
+    }
+
+    /**
+     * Increase in one the amount of coffee
+     * @param view the text where is indicated the amount of coffee
+     */
+
+    public void increment(View view) {
+        if (quantity < 10) {
+            quantity = quantity + 1;
+            display(quantity);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), R.string.No_more_than_ten,
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    /**
+     * Reduce in one the amount of coffee
+     *
+     * @param view the text where is indicated the amount of coffee
+     */
+    public void decrement(View view) {
+        if (quantity > 1) {
+            quantity = quantity - 1;
+            display(quantity);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), R.string.No_less_than_one,
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 
     /**
@@ -314,15 +348,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given price on the screen in USD
-     */
-    private String displayPrice(int number) {
-        Locale locale = new Locale("en", "US");
-        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-        return fmt.format(number);
-    }
-
-    /**
      * This method displays the message for the order
      */
 
@@ -332,37 +357,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Increase in one the amount of coffee
-     * @param view the text where is indicated the amount of coffee
+     * This method displays the given price on the screen in USD
      */
-
-    public void increment(View view) {
-        if (quantity < 10) {
-            quantity = quantity + 1;
-            display(quantity);
-        }
-        else{
-            Toast.makeText(getApplicationContext(), R.string.No_more_than_ten,
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
-
-    /**
-     * Reduce in one the amount of coffee
-     *
-     * @param view the text where is indicated the amount of coffee
-     */
-    public void decrement(View view) {
-        if (quantity > 1) {
-            quantity = quantity - 1;
-            display(quantity);
-        }
-        else{
-            Toast.makeText(getApplicationContext(), R.string.No_less_than_one,
-                    Toast.LENGTH_LONG).show();
-        }
-
+    private String displayPrice(int number) {
+        Locale locale = new Locale("en", "US");
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+        return fmt.format(number);
     }
 
     /**
