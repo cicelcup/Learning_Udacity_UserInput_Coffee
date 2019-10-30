@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -49,9 +50,17 @@ public class SettingsActivity extends AppCompatActivity {
         //Setting the value of the preference according the option chose by the user
 //        override of the method in the interface
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-            preference.setSummary(stringValue);
-            return true;
+
+            if (value.toString().length() != 0) {
+                String stringValue = value.toString();
+                preference.setSummary(stringValue);
+                return true;
+            }
+            else {
+                Toast.makeText(preference.getContext(), R.string.No_preference_value,
+                        Toast.LENGTH_LONG).show();
+                return false;
+            }
         }
 
 //        setting the preference listener and change the value in the preference screen

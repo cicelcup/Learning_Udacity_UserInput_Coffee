@@ -28,6 +28,7 @@
     <string name="orderSummaryReady_text">The order was already set</string>
     <string name="No_less_than_one">You cannot have less than 1 coffee</string>
     <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
+    <string name="No_preference_value">You cannot leave the field without any value</string>
     <string name="settings_menu">Settings</string>
     <string name="no_email_software">There\'s not any software for sending emails</string>
     <string name="prices_text">Prices</string>

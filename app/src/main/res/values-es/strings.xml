@@ -38,4 +38,5 @@
     <string name="coffee_name">"Café: "</string>
     <string name="chocolate_name">"Chocolate: "</string>
     <string name="whipped_cream_name">"Crema Batida: "</string>
+    <string name="No_preference_value">No puedes dejar el campo sin valor</string>
 </resources>
