@@ -27,6 +27,18 @@
 
         <TextView
             style="@style/HeaderTextStyle"
+            android:text="@string/prices_text" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/prices"
+            android:layout_marginBottom="16dp"
+            tools:text="Cafe: 5$"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            style="@style/HeaderTextStyle"
             android:text="@string/toppings_text" />
 
 <!--        checkbox to choose options-->

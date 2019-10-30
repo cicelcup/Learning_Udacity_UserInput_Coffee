@@ -27,6 +27,7 @@
     <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
     <string name="settings_menu">Settings</string>
     <string name="no_email_software">There\'s not any software for sending emails</string>
+    <string name="prices_text">Prices</string>
 
     <!-- Strings for coffee price -->
     <string name="coffee_price_title">Coffee Price</string>
