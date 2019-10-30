@@ -139,28 +139,28 @@ public class MainActivity extends AppCompatActivity {
                 getDefaultSharedPreferences(this);
 
 //        coffee price
-        String coffee_value;
-        coffee_value = sharedPreferences.getString(
+        String preferenceValue;
+        preferenceValue = sharedPreferences.getString(
                 getString(R.string.coffee_price_key),
                 getString(R.string.coffee_price_default));
 
-        assert coffee_value != null;
-        coffee_price = Integer.parseInt(coffee_value);
+        assert preferenceValue != null;
+        coffee_price = Integer.parseInt(preferenceValue);
 
 //        whipped cream price
-        String whipped_cream_value = sharedPreferences.getString(
+        preferenceValue = sharedPreferences.getString(
                 getString(R.string.whipped_cream_price_key),
                 getString(R.string.whipped_cream_price_default));
 
-        assert whipped_cream_value != null;
-        whipped_cream_price = Integer.parseInt(whipped_cream_value);
+        assert preferenceValue != null;
+        whipped_cream_price = Integer.parseInt(preferenceValue);
 
 //        chocolate price
-        String chocolate_value = sharedPreferences.getString(
+        preferenceValue = sharedPreferences.getString(
                 getString(R.string.chocolate_price_key),
                 getString(R.string.chocolate_price_default));
-        assert chocolate_value != null;
-        chocolate_price = Integer.parseInt(chocolate_value);
+        assert preferenceValue != null;
+        chocolate_price = Integer.parseInt(preferenceValue);
 
 //        email
         email = sharedPreferences.getString(
@@ -168,13 +168,13 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.email_default));
 
         SpannableStringBuilder sp = new SpannableStringBuilder();
-        sp.append(getString(R.string.coffee_name)).append(": ");
-        sp.append(displayPrice(chocolate_price)).append("   ");
+        sp.append(formatText(getString(R.string.coffee_name),2));
+        sp.append(displayPrice(coffee_price)).append("   ");
 
-        sp.append(getString(R.string.whippedCream_check)).append(": ");
+        sp.append(formatText(getString(R.string.whipped_cream_name),2));
         sp.append(displayPrice(whipped_cream_price)).append("   ");
 
-        sp.append(getString(R.string.chocolate_check)).append(": ");
+        sp.append(formatText(getString(R.string.chocolate_name),2));
         sp.append(displayPrice(chocolate_price));
 //        sp.append(formatText(getString(R.string.quantity_text),true));
 
@@ -295,70 +295,68 @@ public class MainActivity extends AppCompatActivity {
 //  it uses a Spannable to provided different color format
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
-        sp.append(formatText(getString(R.string.orderSummaryName_text),true));
+        sp.append(formatText(getString(R.string.orderSummaryName_text),1));
         sp.append(name).append("\n");
-        sp.append(formatText(getString(R.string.quantity_text),true));
+        sp.append(formatText(getString(R.string.quantity_text),1));
         sp.append(String.valueOf(quantity)).append("\n");
 
         if(hasWhippedCream) {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text),true));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text),1));
             sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasWhippedCream_text),true));
+            sp.append(formatText(getString(R.string.hasWhippedCream_text),1));
             sp.append(getString(R.string.No_text)).append("\n");
         }
 
         if(hasChocolate) {
-            sp.append(formatText(getString(R.string.hasChocolate_text),true));
+            sp.append(formatText(getString(R.string.hasChocolate_text),1));
             sp.append(getString(R.string.Yes_text)).append("\n");
         }
         else
         {
-            sp.append(formatText(getString(R.string.hasChocolate_text),true));
+            sp.append(formatText(getString(R.string.hasChocolate_text),1));
             sp.append(getString(R.string.No_text)).append("\n");
         }
 
-        sp.append(formatText(getString(R.string.totalPrice_text),true));
+        sp.append(formatText(getString(R.string.totalPrice_text),1));
         sp.append(displayPrice(totalPrice)).append("\n");
 
-        sp.append(formatText(getString(R.string.thanksOrder_Text),false));
+        sp.append(formatText(getString(R.string.thanksOrder_Text),3));
 
         return sp;
     }
 //  function to format the summary order
-    private SpannableStringBuilder formatText(String text,boolean optionCenter) {
+    private SpannableStringBuilder formatText(String text,int option) {
 
         //        Variable to format the string in different ways
         SpannableStringBuilder sp = new SpannableStringBuilder();
-
-//        Variable to bold text
-        StyleSpan boldText = new StyleSpan(Typeface.ITALIC);
-
-//        Variable to color text
-        ForegroundColorSpan colorText = new ForegroundColorSpan(
-                getResources().getColor(R.color.colorPrimary));
-
-
         sp.append(text);
         int start = 0;
-//        bold format
-        sp.setSpan(boldText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        color format
+
+        //        Variable to format the text
+        StyleSpan italyText = new StyleSpan(Typeface.ITALIC);
+        ForegroundColorSpan colorText = new ForegroundColorSpan(
+                getResources().getColor(R.color.colorPrimary));
+        BulletSpan bulletText = new BulletSpan(
+                16,getResources().getColor(R.color.colorPrimaryDark));
+        AlignmentSpan center_text = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
+
         sp.setSpan(colorText,start,sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-//        bullet option
-        if (optionCenter) {
-            BulletSpan bulletText = new BulletSpan(
-                    16,getResources().getColor(R.color.colorPrimaryDark));
-            sp.setSpan(bulletText, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        switch (option){
+            case 1:
+                sp.setSpan(italyText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                sp.setSpan(bulletText, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
+            case 2:
+                break;
+            case 3:
+                sp.setSpan(italyText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                sp.setSpan(center_text, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
         }
-        else{
-            AlignmentSpan t = new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
-            sp.setSpan(t, start, sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
         return sp;
     }
 

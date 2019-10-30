@@ -4,7 +4,9 @@
     <string name="name_text">Name</string>
     <string name="toppings_text">Topping</string>
     <string name="whippedCream_check">Whipped Cream</string>
-    <string name="coffee_name">Coffee</string>
+    <string name="coffee_name">"Coffee: "</string>
+    <string name="whipped_cream_name">"Whipped cream: "</string>
+    <string name="chocolate_name">"Chocolate: "</string>
     <string name="chocolate_check">Chocolate</string>
     <string name="quantity_text">"Quantity: "</string>
     <string name="orderSummary_text">Order Summary</string>
