@@ -10,19 +10,23 @@ import android.os.Bundle;
 
 public class SettingsActivity extends AppCompatActivity {
 
+//    Create the activity and set the layout with a fragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
 
+//    inner class to implement the fragment
     public static class CoffeePreferenceFragment extends PreferenceFragment
             implements Preference.OnPreferenceChangeListener {
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+//            adding the fragment to the activity
             addPreferencesFromResource(R.xml.settings_main);
 
+//            setting the summary values to the preferences
             Preference coffee_price =
                     findPreference(getString(R.string.coffee_price_key));
             bindPreferenceSummaryToValue(coffee_price);
@@ -43,12 +47,14 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         //Setting the value of the preference according the option chose by the user
+//        override of the method in the interface
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
             preference.setSummary(stringValue);
             return true;
         }
 
+//        setting the preference listener and change the value in the preference screen
         private void bindPreferenceSummaryToValue(Preference preference) {
             //Set on preference change listener to verify that the preference is observed
             preference.setOnPreferenceChangeListener(this);

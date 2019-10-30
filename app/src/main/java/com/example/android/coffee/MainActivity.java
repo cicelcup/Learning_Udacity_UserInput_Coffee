@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     final static String HAS_WHIPPED_CREAM = "cream";
     final static String HAS_CHOCOLATE = "chocolate";
 
-//    Variable to define the price of the ingredients
+//    Variable to define the price of the ingredients and the email
     int coffee_price;
     int chocolate_price;
     int whipped_cream_price;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     String name;
     boolean hasWhippedCream;
     boolean hasChocolate;
+
 //Views variables
     Button sendEmailButton;
     EditText nameBox;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         setOrderVariables();
-        // Save the user's current score
+        // Save the user's current edition
         savedInstanceState.putString(NAME,name);
         savedInstanceState.putInt(QUANTITY,quantity);
         savedInstanceState.putBoolean(HAS_WHIPPED_CREAM,hasWhippedCream);
@@ -91,12 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
     //    Getting the state of the current activity
     private void gettingInstanceState(Bundle savedInstanceState) {
+//        if the state is different than null, filled the views
         if (savedInstanceState!=null){
             nameBox.setText(savedInstanceState.getString(NAME));
             quantity = savedInstanceState.getInt(QUANTITY);
             whippedCreamBox.setChecked(savedInstanceState.getBoolean(HAS_WHIPPED_CREAM));
             chocolateBox.setChecked(savedInstanceState.getBoolean(HAS_CHOCOLATE));
         }
+//        set the default values of the views
         else{
             nameBox.setText("");
             quantity = 1;
@@ -105,30 +108,36 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//    in on resume is getting the preferences of the activity (on resume comes after on create)
     @Override
     protected void onResume() {
         super.onResume();
         gettingPreferences();
     }
 
+//    on create of the activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        initiate of the views
         whippedCreamBox = findViewById(R.id.hasWhippedCream_checkbox_view);
         chocolateBox =  findViewById(R.id.hasChocolate_checkbox_view);
         nameBox = findViewById(R.id.name_editText_view);
 
+//        getting the instance state
         gettingInstanceState(savedInstanceState);
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
     }
 
+//    function to getting the preferences
     private void gettingPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.
                 getDefaultSharedPreferences(this);
 
+//        coffee price
         String stringPreferenceValue;
         stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.coffee_price_key),
@@ -137,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         assert stringPreferenceValue != null;
         coffee_price = Integer.parseInt(stringPreferenceValue);
 
+//        whipped cream price
         stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.whipped_cream_price_key),
                 getString(R.string.whipped_cream_price_default));
@@ -144,12 +154,14 @@ public class MainActivity extends AppCompatActivity {
         assert stringPreferenceValue != null;
         whipped_cream_price = Integer.parseInt(stringPreferenceValue);
 
+//        chocolate price
         stringPreferenceValue = sharedPreferences.getString(
                 getString(R.string.chocolate_price_key),
                 getString(R.string.chocolate_price_default));
         assert stringPreferenceValue != null;
         chocolate_price = Integer.parseInt(stringPreferenceValue);
 
+//        email
         String o = sharedPreferences.getString(
                 getString(R.string.email_key),
                 getString(R.string.email_default));
@@ -159,16 +171,21 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+// ser order variables according user option
         setOrderVariables();
 
+//        calculated the price
         int priceCalculated = calculatePrice(quantity, coffee_price,
                 hasWhippedCream, hasChocolate);
 
+//        Create order summary
         SpannableStringBuilder sp = createOrderSummary(priceCalculated,
                 hasWhippedCream, hasChocolate, name);
 
+//      Get the messages to be used in the email
         message = sp.toString();
 
+//        Display the message with different format
         displayMessage(sp);
 
         Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
@@ -180,15 +197,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setOrderVariables() {
         //Figure out if the user wants Whipped Cream
-
         hasWhippedCream = whippedCreamBox.isChecked();
 
         //Figure out if the user wants Whipped Cream
-
         hasChocolate = chocolateBox.isChecked();
 
         //Put the name in the order
-
         name = nameBox.getText().toString();
     }
 
@@ -229,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SpannableStringBuilder createOrderSummary(int totalPrice, boolean hasWhippedCream,
                                       boolean hasChocolate, String name) {
+//  it uses a Spannable to provided different color format
         SpannableStringBuilder sp = new SpannableStringBuilder();
 
         sp.append(formatText(getString(R.string.orderSummaryName_text),true));
@@ -263,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
 
         return sp;
     }
-
+//  function to format the summary order
     private SpannableStringBuilder formatText(String text,boolean optionCenter) {
 
         //        Variable to format the string in different ways
@@ -279,9 +294,12 @@ public class MainActivity extends AppCompatActivity {
 
         sp.append(text);
         int start = 0;
+//        bold format
         sp.setSpan(boldText,start,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        color format
         sp.setSpan(colorText,start,sp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+//        bullet option
         if (optionCenter) {
             BulletSpan bulletText = new BulletSpan(
                     16,getResources().getColor(R.color.colorPrimaryDark));
@@ -301,7 +319,6 @@ public class MainActivity extends AppCompatActivity {
     private String displayPrice(int number) {
         Locale locale = new Locale("en", "US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-
         return fmt.format(number);
     }
 

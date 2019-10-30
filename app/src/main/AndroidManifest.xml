@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/coffee_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--        another theme to change the preference color-->
         <activity
             android:name=".SettingsActivity"
             android:theme="@style/PreferenceScreen"

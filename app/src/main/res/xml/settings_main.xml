@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Preference screen for the prices and email-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_menu">
 
+<!--    Preference screen for the coffee price-->
     <EditTextPreference
         android:key="@string/coffee_price_key"
         android:title="@string/coffee_price_title"
@@ -10,6 +12,7 @@
         android:inputType="numberDecimal"
         android:selectAllOnFocus="true"/>
 
+    <!--    Preference screen for the whipped cream price-->
     <EditTextPreference
         android:key="@string/whipped_cream_price_key"
         android:title="@string/whipped_cream_price_title"
@@ -17,6 +20,7 @@
         android:inputType="numberDecimal"
         android:selectAllOnFocus="true"/>
 
+    <!--    Preference screen for the chocolate price-->
     <EditTextPreference
         android:key="@string/chocolate_price_key"
         android:title="@string/chocolate_price_title"
@@ -24,6 +28,7 @@
         android:inputType="numberDecimal"
         android:selectAllOnFocus="true"/>
 
+    <!--    Preference screen for the email-->
     <EditTextPreference
         android:key="@string/email_key"
         android:title="@string/email_title"
