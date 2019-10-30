@@ -15,7 +15,6 @@ import android.text.style.AlignmentSpan;
 import android.text.style.BulletSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
     String name;
     boolean hasWhippedCream;
     boolean hasChocolate;
+//Views variables
     Button sendEmailButton;
+    EditText nameBox;
+    CheckBox chocolateBox;
+    CheckBox whippedCreamBox;
 
 //    Create the menu
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
+        setOrderVariables();
         // Save the user's current score
         savedInstanceState.putString(NAME,name);
         savedInstanceState.putInt(QUANTITY,quantity);
@@ -85,10 +89,29 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    //    Getting the state of the current activity
+    private void gettingInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState!=null){
+            nameBox.setText(savedInstanceState.getString(NAME));
+            quantity = savedInstanceState.getInt(QUANTITY);
+            whippedCreamBox.setChecked(savedInstanceState.getBoolean(HAS_WHIPPED_CREAM));
+            chocolateBox.setChecked(savedInstanceState.getBoolean(HAS_CHOCOLATE));
+        }
+        else{
+            nameBox.setText("");
+            quantity = 1;
+            whippedCreamBox.setChecked(false);
+            chocolateBox.setChecked(false);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        whippedCreamBox = findViewById(R.id.hasWhippedCream_checkbox_view);
+        chocolateBox =  findViewById(R.id.hasChocolate_checkbox_view);
+        nameBox = findViewById(R.id.name_editText_view);
 
         gettingInstanceState(savedInstanceState);
         gettingPreferences();
@@ -127,39 +150,11 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.email_default));
     }
 
-    //    Getting the state of the current activity
-    private void gettingInstanceState(Bundle savedInstanceState) {
-        if (savedInstanceState!=null){
-            name = savedInstanceState.getString(NAME);
-            quantity = savedInstanceState.getInt(QUANTITY);
-            hasWhippedCream = savedInstanceState.getBoolean(HAS_WHIPPED_CREAM);
-            hasChocolate = savedInstanceState.getBoolean(HAS_CHOCOLATE);
-        }
-        else{
-            name = "";
-            quantity = 1;
-            hasWhippedCream = false;
-            hasChocolate = false;
-        }
-    }
-
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        //Figure out if the user wants Whipped Cream
-        CheckBox whippedCreamBox = findViewById(R.id.hasWhippedCream_checkbox_view);
-        hasWhippedCream = whippedCreamBox.isChecked();
-
-        //Figure out if the user wants Whipped Cream
-        CheckBox chocolateBox =  findViewById(R.id.hasChocolate_checkbox_view);
-        hasChocolate = chocolateBox.isChecked();
-
-        //Put the name in the order
-        EditText nameBox = findViewById(R.id.name_editText_view);
-        name = nameBox.getText().toString();
-
-        Log.i("Exercise", name); // show the name value in the log
+        setOrderVariables();
 
         int priceCalculated = calculatePrice(quantity, coffee_price,
                 hasWhippedCream, hasChocolate);
@@ -176,6 +171,20 @@ public class MainActivity extends AppCompatActivity {
 
         sendEmailButton = findViewById(R.id.sendEmail_Button_View);
         sendEmailButton.setEnabled(true);
+    }
+
+    private void setOrderVariables() {
+        //Figure out if the user wants Whipped Cream
+
+        hasWhippedCream = whippedCreamBox.isChecked();
+
+        //Figure out if the user wants Whipped Cream
+
+        hasChocolate = chocolateBox.isChecked();
+
+        //Put the name in the order
+
+        name = nameBox.getText().toString();
     }
 
     /**

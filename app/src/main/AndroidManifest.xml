@@ -18,8 +18,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.coffee.MainActivity"/>
         </activity>
+        <!--launch mode as single top back button from the navigation bar works as well as the back button-->
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
