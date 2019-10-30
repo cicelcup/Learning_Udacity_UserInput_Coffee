@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
     final static String HAS_WHIPPED_CREAM = "cream";
     final static String HAS_CHOCOLATE = "chocolate";
 
-//    Constants to define the price of the ingredients
-    static int PRICE_OF_COFFEE = 5;
-    static int PRICE_OF_CHOCOLATE = 2;
-    static int PRICE_OF_WHIPPED_CREAM = 1;
+//    Variable to define the price of the ingredients
+    int price_of_coffee = 7;
+    int price_of_chocolate = 4;
+    int price_of_whipped_cream = 2;
+
+//    variables of the current values input for the user
     int quantity;
     String message;
     String name;
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("Exercise", name); // show the name value in the log
 
-        int priceCalculated = calculatePrice(quantity, PRICE_OF_COFFEE,
+        int priceCalculated = calculatePrice(quantity, price_of_coffee,
                 hasWhippedCream, hasChocolate);
 
         SpannableStringBuilder sp = createOrderSummary(priceCalculated,
@@ -181,11 +183,11 @@ public class MainActivity extends AppCompatActivity {
         int totalPrice = price;
 
         if (hasWhippedCream) {
-            totalPrice += PRICE_OF_WHIPPED_CREAM;
+            totalPrice += price_of_whipped_cream;
         }
 
         if (hasChocolate) {
-            totalPrice += PRICE_OF_CHOCOLATE;
+            totalPrice += price_of_chocolate;
         }
 
 
