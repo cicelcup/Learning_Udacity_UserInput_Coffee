@@ -9,7 +9,7 @@
         android:key="@string/coffee_price_key"
         android:title="@string/coffee_price_title"
         android:defaultValue="@string/coffee_price_default"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:selectAllOnFocus="true"/>
 
     <!--    Preference screen for the whipped cream price-->
@@ -17,7 +17,7 @@
         android:key="@string/whipped_cream_price_key"
         android:title="@string/whipped_cream_price_title"
         android:defaultValue="@string/whipped_cream_price_default"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:selectAllOnFocus="true"/>
 
     <!--    Preference screen for the chocolate price-->
@@ -25,7 +25,7 @@
         android:key="@string/chocolate_price_key"
         android:title="@string/chocolate_price_title"
         android:defaultValue="@string/chocolate_price_default"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:selectAllOnFocus="true"/>
 
     <!--    Preference screen for the email-->
