@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        gettingPreferences();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -114,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
         nameBox = findViewById(R.id.name_editText_view);
 
         gettingInstanceState(savedInstanceState);
-        gettingPreferences();
 
         display(quantity);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));
