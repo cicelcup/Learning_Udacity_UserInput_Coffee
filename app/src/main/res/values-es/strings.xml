@@ -32,5 +32,6 @@
     <string name="chocolate_price_title">Precio del Chocolate</string>
     <string name="coffee_price_title">Precio del Café</string>
     <string name="whipped_cream_price_title">Precio de la Crema Batida</string>
-    <string name="email_title">Correo electrónico del remitente</string>
+    <string name="email_title">Correo electrónico de destino</string>
+    <string name="no_email_software">No hay programas para enviar correos</string>
 </resources>

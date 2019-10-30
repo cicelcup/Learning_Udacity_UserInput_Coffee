@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     int coffee_price;
     int chocolate_price;
     int whipped_cream_price;
+    String email;
 
 //    variables of the current values input for the user
     int quantity;
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         chocolate_price = Integer.parseInt(stringPreferenceValue);
 
 //        email
-        String o = sharedPreferences.getString(
+        email = sharedPreferences.getString(
                 getString(R.string.email_key),
                 getString(R.string.email_default));
     }
@@ -377,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendEmail(View view){
 //        Array of emails
-        String[] emailAddresses = {"cicelcup@gmail.com","xmoyas@gmail.com"};
+        String[] emailAddresses = {email};
 //        New Intent of sending email
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
@@ -389,6 +390,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (intent.resolveActivity(getPackageManager())!=null){
             startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), R.string.no_email_software,
+                    Toast.LENGTH_LONG).show();
         }
         sendEmailButton.setEnabled(false);
         displayMessage(new SpannableStringBuilder(getString(R.string.notOrderYet_Text)));

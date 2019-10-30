@@ -26,6 +26,7 @@
     <string name="No_less_than_one">You cannot have less than 1 coffee</string>
     <string name="No_more_than_ten">You cannot add more than 10 coffees</string>
     <string name="settings_menu">Settings</string>
+    <string name="no_email_software">There\'s not any software for sending emails</string>
 
     <!-- Strings for coffee price -->
     <string name="coffee_price_title">Coffee Price</string>
@@ -43,7 +44,7 @@
     <string name="chocolate_price_default" translatable="false">2</string>
 
     <!-- Strings for origin email-->
-    <string name="email_title">Sender\'s email</string>
+    <string name="email_title">Recipient email</string>
     <string name="email_key" translatable="false">email</string>
     <string name="email_default" translatable="false">cicelcup@hotmail.com</string>
 
