@@ -1,25 +1,18 @@
 package com.example.android.coffee;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
+import android.widget.Toast;
 
-public class PreferenceFragment extends PreferenceFragmentCompat{
+public class PreferenceFragment extends PreferenceFragmentCompat
+        implements Preference.OnPreferenceChangeListener {
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.settings_main);
-    }
-}
 
-/*
-//    inner class to implement the fragment
-public static class CoffeePreferenceFragment extends PreferenceFragment
-        implements Preference.OnPreferenceChangeListener {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//            adding the fragment to the activity
-        addPreferencesFromResource(R.xml.settings_main);
-
-//            setting the summary values to the preferences
+        //            setting the summary values to the preferences
         Preference coffee_price =
                 findPreference(getString(R.string.coffee_price_key));
         bindPreferenceSummaryToValue(coffee_price);
@@ -35,14 +28,12 @@ public static class CoffeePreferenceFragment extends PreferenceFragment
         Preference email =
                 findPreference(getString(R.string.email_key));
         bindPreferenceSummaryToValue(email);
-
     }
 
-    @Override
     //Setting the value of the preference according the option chose by the user
 //        override of the method in the interface
+    @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
-
         if (value.toString().length() != 0) {
             String stringValue = value.toString();
             preference.setSummary(stringValue);
@@ -69,5 +60,6 @@ public static class CoffeePreferenceFragment extends PreferenceFragment
         onPreferenceChange(preference, preferenceString);
     }
 }
-*/
+
+
 

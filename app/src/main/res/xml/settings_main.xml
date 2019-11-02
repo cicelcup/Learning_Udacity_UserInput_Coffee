@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Preference screen for the prices and email-->
-<PreferenceScreen
+<android.support.v7.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_menu">
 
 <!--    Preference screen for the coffee price-->
-    <EditTextPreference
+    <android.support.v7.preference.EditTextPreference
         android:key="@string/coffee_price_key"
         android:title="@string/coffee_price_title"
+        android:dialogMessage="Esto es una prueba 1"
         android:defaultValue="@string/coffee_price_default"
         android:inputType="number"
-        android:selectAllOnFocus="true"/>
+        android:selectAllOnFocus="true"
+        android:dialogLayout="@layout/pref_dialog_edittext_fix"/>
 
     <!--    Preference screen for the whipped cream price-->
-    <EditTextPreference
+    <android.support.v7.preference.EditTextPreference
         android:key="@string/whipped_cream_price_key"
         android:title="@string/whipped_cream_price_title"
+        android:dialogMessage="Esto es una prueba 2"
+        android:dialogLayout="@layout/pref_dialog_edittext_fix"
         android:defaultValue="@string/whipped_cream_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"/>
 
     <!--    Preference screen for the chocolate price-->
-    <EditTextPreference
+    <android.support.v7.preference.EditTextPreference
         android:key="@string/chocolate_price_key"
         android:title="@string/chocolate_price_title"
+        android:dialogLayout="@layout/pref_dialog_edittext_fix"
+        android:dialogMessage="Esto es una prueba 3"
         android:defaultValue="@string/chocolate_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"/>
 
     <!--    Preference screen for the email-->
-    <EditTextPreference
+    <android.support.v7.preference.EditTextPreference
         android:key="@string/email_key"
         android:title="@string/email_title"
         android:defaultValue="@string/email_default"
+        android:dialogMessage="Esto es una prueba 4"
+        android:dialogLayout="@layout/pref_dialog_edittext_fix"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="false"/>
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>
