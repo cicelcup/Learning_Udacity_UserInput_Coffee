@@ -32,6 +32,8 @@
     <string name="settings_menu">Settings</string>
     <string name="no_email_software">There\'s not any software for sending emails</string>
     <string name="prices_text">Prices</string>
+    <string name="add_integer_value">Add an integer value</string>
+    <string name="add_email_value">Add a valid email</string>
 
     <!-- Strings for coffee price -->
     <string name="coffee_price_title">Coffee Price</string>

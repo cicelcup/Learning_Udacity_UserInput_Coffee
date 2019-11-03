@@ -8,7 +8,7 @@
     <android.support.v7.preference.EditTextPreference
         android:key="@string/coffee_price_key"
         android:title="@string/coffee_price_title"
-        android:dialogMessage="Esto es una prueba 1"
+        android:dialogMessage="@string/add_integer_value"
         android:defaultValue="@string/coffee_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"
@@ -18,7 +18,7 @@
     <android.support.v7.preference.EditTextPreference
         android:key="@string/whipped_cream_price_key"
         android:title="@string/whipped_cream_price_title"
-        android:dialogMessage="Esto es una prueba 2"
+        android:dialogMessage="@string/add_integer_value"
         android:dialogLayout="@layout/pref_dialog_edittext_fix"
         android:defaultValue="@string/whipped_cream_price_default"
         android:inputType="number"
@@ -29,7 +29,7 @@
         android:key="@string/chocolate_price_key"
         android:title="@string/chocolate_price_title"
         android:dialogLayout="@layout/pref_dialog_edittext_fix"
-        android:dialogMessage="Esto es una prueba 3"
+        android:dialogMessage="@string/add_integer_value"
         android:defaultValue="@string/chocolate_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"/>
@@ -39,7 +39,7 @@
         android:key="@string/email_key"
         android:title="@string/email_title"
         android:defaultValue="@string/email_default"
-        android:dialogMessage="Esto es una prueba 4"
+        android:dialogMessage="@string/add_email_value"
         android:dialogLayout="@layout/pref_dialog_edittext_fix"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="false"/>

@@ -39,4 +39,6 @@
     <string name="chocolate_name">"Chocolate: "</string>
     <string name="whipped_cream_name">"Crema Batida: "</string>
     <string name="No_preference_value">No puedes dejar el campo sin valor</string>
+    <string name="add_email_value">Agregue un correo electrónico valido</string>
+    <string name="add_integer_value">Agregue un número entero</string>
 </resources>
