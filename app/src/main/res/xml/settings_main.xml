@@ -12,14 +12,14 @@
         android:defaultValue="@string/coffee_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        android:dialogLayout="@layout/pref_dialog_edittext_fix"/>
+        android:dialogLayout="@layout/pref_dialog_edit_text_fix"/>
 
     <!--    Preference screen for the whipped cream price-->
     <android.support.v7.preference.EditTextPreference
         android:key="@string/whipped_cream_price_key"
         android:title="@string/whipped_cream_price_title"
         android:dialogMessage="@string/add_integer_value"
-        android:dialogLayout="@layout/pref_dialog_edittext_fix"
+        android:dialogLayout="@layout/pref_dialog_edit_text_fix"
         android:defaultValue="@string/whipped_cream_price_default"
         android:inputType="number"
         android:selectAllOnFocus="true"/>
@@ -28,7 +28,7 @@
     <android.support.v7.preference.EditTextPreference
         android:key="@string/chocolate_price_key"
         android:title="@string/chocolate_price_title"
-        android:dialogLayout="@layout/pref_dialog_edittext_fix"
+        android:dialogLayout="@layout/pref_dialog_edit_text_fix"
         android:dialogMessage="@string/add_integer_value"
         android:defaultValue="@string/chocolate_price_default"
         android:inputType="number"
@@ -40,7 +40,7 @@
         android:title="@string/email_title"
         android:defaultValue="@string/email_default"
         android:dialogMessage="@string/add_email_value"
-        android:dialogLayout="@layout/pref_dialog_edittext_fix"
+        android:dialogLayout="@layout/pref_dialog_edit_text_fix"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="false"/>
 </android.support.v7.preference.PreferenceScreen>

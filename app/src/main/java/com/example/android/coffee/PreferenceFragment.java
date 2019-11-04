@@ -14,9 +14,12 @@ import android.widget.Toast;
 public class PreferenceFragment extends PreferenceFragmentCompat
         implements Preference.OnPreferenceChangeListener {
 
+//    add the line between the recycler views in the preference screen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        get the recycler view from the view created into the fragment
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+//        add the item decoration
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),
                 DividerItemDecoration.VERTICAL));
         super.onViewCreated(view, savedInstanceState);
@@ -24,9 +27,10 @@ public class PreferenceFragment extends PreferenceFragmentCompat
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
+//        add the layout for the preference screen
         addPreferencesFromResource(R.xml.settings_main);
 
-        //            setting the summary values to the preferences
+        //setting the summary values to the preferences
         Preference coffee_price =
                 findPreference(getString(R.string.coffee_price_key));
         bindPreferenceSummaryToValue(coffee_price);

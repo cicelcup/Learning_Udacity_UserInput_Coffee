@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dialog_alert_default_padding"
-        android:paddingBottom="@dimen/dialog_alert_default_padding"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding"
         android:paddingStart="?dialogPreferredPadding"
         android:paddingLeft="?dialogPreferredPadding"
         android:paddingEnd="?dialogPreferredPadding"
@@ -22,7 +22,7 @@
         <TextView
             android:id="@android:id/message"
             style="?android:attr/textAppearanceSmall"
-            android:layout_marginBottom="@dimen/dialog_alert_default_padding"
+            android:layout_marginBottom="@dimen/small_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="?android:attr/textColorSecondary" />
@@ -31,6 +31,6 @@
             android:id="@android:id/edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="Autofill,LabelFor,TextFields" />
+            tools:ignore="AutoFill,LabelFor,TextFields" />
     </LinearLayout>
 </ScrollView>

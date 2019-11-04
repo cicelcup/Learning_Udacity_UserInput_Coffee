@@ -23,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         gettingPreferences();
+        displayListPriceHeader();
     }
 
 //    function to getting the preferences
@@ -166,7 +168,9 @@ public class MainActivity extends AppCompatActivity {
         email = sharedPreferences.getString(
                 getString(R.string.email_key),
                 getString(R.string.email_default));
+    }
 
+    private void displayListPriceHeader() {
         SpannableStringBuilder sp = new SpannableStringBuilder();
         sp.append(formatText(getString(R.string.coffee_name),2));
         sp.append(displayPrice(coffee_price)).append("   ");
@@ -176,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
 
         sp.append(formatText(getString(R.string.chocolate_name),2));
         sp.append(displayPrice(chocolate_price));
-//        sp.append(formatText(getString(R.string.quantity_text),true));
 
         TextView prices_text_view = findViewById(R.id.prices);
         prices_text_view.setText(sp);

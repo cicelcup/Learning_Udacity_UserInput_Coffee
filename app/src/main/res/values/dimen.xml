@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="dialog_alert_default_padding">8dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="medium_padding">16dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="height_header_buttons">48dp</dimen>
+    <dimen name="standard_text_size">16sp</dimen>
+    <dimen name="margin_size">16dp</dimen>
 </resources>

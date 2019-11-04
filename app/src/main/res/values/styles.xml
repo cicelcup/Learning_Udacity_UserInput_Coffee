@@ -8,8 +8,6 @@
     </style>
 
     <style name="PreferenceScreen" parent="AppTheme">
-<!--        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
-<!--        <item name="alertDialogTheme">@style/Theme.AppCompat.DayNight.Dialog.Alert</item>-->
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:listDivider">@drawable/line_divider</item>
     </style>
@@ -17,10 +15,10 @@
     <!-- This is the style for the headers-->
     <style name="HeaderTextStyle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_height">@dimen/height_header_buttons</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/standard_text_size</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -28,17 +26,17 @@
     <style name="checkbox_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:paddingLeft">6dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_size</item>
+        <item name="android:paddingLeft">@dimen/small_padding</item>
+        <item name="android:paddingRight">@dimen/small_padding</item>
+        <item name="android:textSize">@dimen/standard_text_size</item>
     </style>
 
     <style name="custom_button">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_size</item>
+        <item name="android:layout_marginRight">@dimen/margin_size</item>
         <item name="android:layout_weight">1</item>
 <!--        adding a custom background and text color-->
         <item name="android:background">@drawable/round_button</item>
@@ -46,8 +44,8 @@
     </style>
 
     <style name="quantity_buttons">
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">@dimen/height_header_buttons</item>
+        <item name="android:layout_height">@dimen/height_header_buttons</item>
         <!--        adding a custom background-->
         <item name="android:background">@drawable/round_button</item>
         <item name="android:textColor">@android:color/white</item>
