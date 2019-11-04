@@ -8,6 +8,7 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -52,6 +53,14 @@ public class PreferenceFragment extends PreferenceFragmentCompat
 //        override of the method in the interface
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
+
+        if(preference.getKey().equals(getString(R.string.email_key))){
+            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(value.toString()).matches()){
+                Toast.makeText(preference.getContext(), R.string.add_email_value,
+                        Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
         if (value.toString().length() != 0) {
             String stringValue = value.toString();
             preference.setSummary(stringValue);
