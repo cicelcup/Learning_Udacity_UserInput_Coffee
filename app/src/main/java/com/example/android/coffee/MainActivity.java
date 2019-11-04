@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         if (nameBox.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
+            Toast.makeText(getApplicationContext(), getString(R.string.add_name_for_order),
                     Toast.LENGTH_LONG).show();
         }
         else {
