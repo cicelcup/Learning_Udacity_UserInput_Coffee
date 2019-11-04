@@ -41,4 +41,5 @@
     <string name="No_preference_value">No puedes dejar el campo sin valor</string>
     <string name="add_email_value">Agregue un correo electrónico valido</string>
     <string name="add_integer_value">Agregue un número entero</string>
+    <string name="add_name_for_order">Agregue un nombre para la orden</string>
 </resources>

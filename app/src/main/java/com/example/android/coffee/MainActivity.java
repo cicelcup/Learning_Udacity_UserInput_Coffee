@@ -15,6 +15,7 @@ import android.text.style.AlignmentSpan;
 import android.text.style.BulletSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -223,28 +224,34 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        if (nameBox.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
+                    Toast.LENGTH_LONG).show();
+        }
+        else {
 // ser order variables according user option
-        setOrderVariables();
+            setOrderVariables();
 
 //        calculated the price
-        int priceCalculated = calculatePrice(quantity, coffee_price,
-                hasWhippedCream, hasChocolate);
+            int priceCalculated = calculatePrice(quantity, coffee_price,
+                    hasWhippedCream, hasChocolate);
 
 //        Create order summary
-        SpannableStringBuilder sp = createOrderSummary(priceCalculated,
-                hasWhippedCream, hasChocolate, name);
+            SpannableStringBuilder sp = createOrderSummary(priceCalculated,
+                    hasWhippedCream, hasChocolate, name);
 
 //      Get the messages to be used in the email
-        message = sp.toString();
+            message = sp.toString();
 
 //        Display the message with different format
-        displayMessage(sp);
+            displayMessage(sp);
 
-        Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
-                Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.orderSummaryReady_text),
+                    Toast.LENGTH_LONG).show();
 
-        sendEmailButton = findViewById(R.id.sendEmail_Button_View);
-        sendEmailButton.setEnabled(true);
+            sendEmailButton = findViewById(R.id.sendEmail_Button_View);
+            sendEmailButton.setEnabled(true);
+        }
     }
 
     private void setOrderVariables() {
